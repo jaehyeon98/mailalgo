@@ -9,6 +9,12 @@
 
 
 
+## Gather Town 링크
+
+https://app.gather.town/app/5lMMGzgycZo0KsTY/mailalgo
+
+
+
 ## 규칙?
 
 1. 월요일에 일주일동안 풀 문제 (6-7개 정도) 정해두기
