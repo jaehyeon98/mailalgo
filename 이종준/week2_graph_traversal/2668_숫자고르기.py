@@ -1,39 +1,37 @@
 N = int(input())
-# data = [[0] * N for _ in range(2)]
-# for i in range(N):
-#     data[0][i] = i + 1
-#     data[1][i] = int(input())
 
 arr = [[] for _ in range(N + 1)]
 
-for i in range(N):
+for i in range(1, N + 1):
     j = int(input())
-    arr[i + 1].append(j)
-
-
+    arr[i].append(j)
 
 def dfs(s):    
     tmp1.append(s)
+    visited[s] = 1
     for e in arr[s]:
-        if visited[e] != 1:
-            visited[e] += 1
+        if not visited[e]:
+            visited[e] = 1
             tmp2.append(e)
             dfs(e)
+        else:
+            tmp2.append(e)
+            return
 
-ans = 0
-ans_list = []
+ans_list = set()
 
 for i in range(1, N + 1):
     visited = [0] * (N + 1)
     tmp1 = []
     tmp2 = []
     dfs(i)
-    print(tmp1)
-    print(tmp2)
     if sorted(tmp1) == sorted(tmp2):
-        ans = len(tmp1)
-        ans_list = tmp2
+        for j in range(len(tmp1)):
+            ans_list.add(tmp1[j])
 
-print(ans)
-for i in range(ans):
-    print(ans_list[i])
+result = list(ans_list)
+result.sort()
+
+print(len(result))
+for i in range(len(result)):
+    print(result[i])
