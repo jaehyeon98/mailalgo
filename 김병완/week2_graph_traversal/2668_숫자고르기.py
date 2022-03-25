@@ -2,38 +2,26 @@ import sys
 
 input = sys.stdin.readline
 
-def dfs(s, n):
-    global answer, answer_list
-    if s == n:
-        for idx in range(N):
-            if cVisit[idx]:
-                if not tVisit[cVisit[idx]]:
-                    break
-        else:
-            answer = n
-            answer_list = cVisit[:]
-    else:
-        for cd in candi:
-            if tVisit[board[cd]]: continue
-            cVisit[cd] = True
-            tVisit[board[cd]] = True
-            dfs(s + 1, n)
-            cVisit[cd] = False
-            tVisit[board[cd]] = False
-
 N = int(input())
-board = [0] * N
-for i in range(N):
+board = [0] * (N + 1)
+for i in range(1, N + 1):
     board[i] = int(input())
-candi = set(board)
-length = len(candi)
-print(length)
-cVisit = [False] * N
-tVisit = [False] * N
-answer = -1
-answer_list = []
-for i in range(length, 0, -1):
-    dfs(0, i)
-    if answer != -1:
-        break
-print(answer, answer_list)
+
+def dfs(cand, target, num):
+    cand.add(num)
+    target.add(board[num])
+    if board[num] not in cand:
+        return dfs(cand, target, board[num])
+    if cand == target:
+        answer.update(cand)
+        return
+
+answer = set()
+for i in range(1, N + 1):
+    if i not in answer:
+        dfs(set(), set(), i)
+
+print(len(answer))
+print('\n'.join(map(str, sorted(list(answer)))))
+
+
