@@ -1,18 +1,18 @@
-def back(i,sum1): # i는 다음 더할 인덱스, sum1은 지금까지 더한 합
-    global ans
-    if i >= n:
-        return
-    sum1 += arr[i]
+n = int(input())
+stair = [0] * (n+1)
+for k in range(1,n+1):
+    stair[k] = int(input())
 
-    if sum1 == s:
-        ans +=1
+if n == 1:
+    print(stair[1])
+elif n == 2:
+    print(stair[1]+stair[2])
+else:
+    max_sum = [0] * (n+1)
+    max_sum[1] = stair[1]
+    max_sum[2] = stair[1] + stair[2]
 
-    back(i+1,sum1)
-    back(i+1,sum1-arr[i])
+    for i in range(3, n+1):
+        max_sum[i] = max(max_sum[i-3]+stair[i-1]+stair[i], max_sum[i-2]+stair[i])
 
-
-n, s = map(int,input().split())
-arr = list(map(int,input().split()))
-ans = 0
-back(0,0)
-print(ans)
+    print(max_sum[n])
