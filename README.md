@@ -60,4 +60,4 @@ https://github.com/tony9402/baekjoon
 
 **< 5주차: Dynamic Programming >**
 
-실버 - 1010 다리놓기 / 22857 가장긴 /  17626 four squares / 1890 점프 / 9465 스티커 / 2156 포도주 시식
+실버 - 1010 다리놓기 / 17626 four squares / 1890 점프 / 9465 스티커 / 2156 포도주 시식
