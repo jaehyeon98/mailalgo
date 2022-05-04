@@ -15,7 +15,7 @@ for i in range(R):
                 if rec_list[k] == min(rec_list):
                     board.pop(k)
                     rec_list.pop(k)
-                    break          
+                    break
 
         board.append(data[i])
         rec_list.append(1)
