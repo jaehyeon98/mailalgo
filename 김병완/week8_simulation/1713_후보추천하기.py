@@ -17,6 +17,7 @@ for idx in range(recom):
             board[index] = stud[idx]
             order.append(stud[idx])
             counting[stud[idx]] += 1
+            index += 1
         else:
             min = 1001
             cand = []
@@ -27,4 +28,22 @@ for idx in range(recom):
                 elif value == min:
                     cand.append(key)
             if len(cand) == 1:
-                order.index()
+                order.remove(cand[0])
+                counting.pop(cand[0])
+                index = board.index(cand[0])
+                board[index] = stud[idx]
+                order.append(stud[idx])
+                counting[stud[idx]] += 1
+            else:
+                for i in order.copy():
+                    if i in cand:
+                        order.remove(i)
+                        counting.pop(i)
+                        index = board.index(i)
+                        board[index] = stud[idx]
+                        order.append(stud[idx])
+                        counting[stud[idx]] += 1
+                        break
+order = list(order)
+order.sort()
+print(' '.join(map(str, order)))
