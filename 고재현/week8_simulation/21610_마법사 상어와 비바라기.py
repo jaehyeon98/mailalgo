@@ -45,7 +45,6 @@ for _ in range(m):
         i,j = q.popleft()
         ni, nj = check(i + (di[d] * s), n), check(j + (dj[d] * s), n)
         arr[ni][nj] += 1
-        for k in range(4):
 
 
 
